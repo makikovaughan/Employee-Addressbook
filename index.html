@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Address Book</title>
+
+  <!--Link to BootStrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <!--Displays the left column-->
+      <div class="col-3 text-center pt-5 pb-5 bg-info text-white">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <i class="far fa-address-book" style="font-size:50px;"></i>
+          <a class="nav-link text-white mt-3 pt-3 text-center" id="v-pills-view-tab" data-toggle="pill" href="#v-pills-view"
+            role="tab" aria-controls="v-pills-view-tab" aria-selected="false">View</a>
+          <a class="nav-link text-white pt-3 text-center" id="v-pills-add-tab" data-toggle="pill" href="#v-pills-add"
+            role="tab" aria-controls="v-pills-add" aria-selected="false">Add</a>
+          <a class="nav-link text-white pt-3 text-center" id="v-pills-verify-tab" data-toggle="pill" href="#v-pills-verify"
+            role="tab" aria-controls="v-pills-verify" aria-selected="false">Verify</a>
+          <a class="nav-link text-white pt-3 text-center" id="v-pills-update-tab" data-toggle="pill" href="#v-pills-update"
+            role="tab" aria-controls="v-pills-update" aria-selected="false">Update</a>
+          <a class="nav-link text-white pt-3 text-center" id="v-pills-delete-tab" data-toggle="pill" href="#v-pills-delete"
+            role="tab" aria-controls="v-pills-delete" aria-selected="false">Delete</a>
+        </div>
+      </div>
+
+      <!--Display the right column based on the selection on the right column-->
+      <div class="col-7 pl-4">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane pt-3 fade" id="v-pills-add" role="tabpanel" aria-labelledby="v-pills-add-tab">
+            <input id="name">
+            <input id="officeNum">
+            <input id="phoneNum">
+            <button id="add">Add</button>
+          </div>
+          <div class="tab-pane pt-3 fade" id="v-pills-verify" role="tabpanel" aria-labelledby="v-pills-verify-tab">
+            <input id="verifyName">
+            <button id="verifyButton">Verify</button>
+            <p class="mt-3" id="result"></p>
+          </div>
+          <div class="tab-pane pt-3 fade" id="v-pills-update" role="tabpanel" aria-labelledby="v-pills-update-tab">
+            <input id="newName">
+            <input id="newOfficeNum">
+            <input id="newPhoneNum">
+            <button id="updateButton">Update</button>
+          </div>
+          <div class="tab-pane pt-3 fade" id="v-pills-delete" role="tabpanel" aria-labelledby="v-pills-delete-tab">
+            <input id="deleteName">
+            <button id="deleteButton">Delete</button>
+          </div>
+          <div class="tab-pane fade show active" id="v-pills-view" role="tabpanel" aria-labelledby="v-pills-view-tab"></div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!--Link the JavaScript file-->
+  <script src="./dom.js"></script>
+  <script src="./employeeList.js"></script>
+  <script src="./app.js"></script>
+
+  <!--BootStrap URL-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
