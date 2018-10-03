@@ -150,6 +150,21 @@ const findEmployee = function (employee) {
 
 }
 
+//Check if the office number exists already
+//Return the index of employee name. If not, returns -1
+const findOffice = function (officeNum) {
+
+    function findIndexNumber(element) {
+
+        return element.officeNum === parseInt(officeNum);
+
+    }
+
+    //Returns the index of matched employee name. If not, returns -1
+    return employeeList.findIndex(findIndexNumber);
+
+}
+
 
 //Add the new data to the employee list and list it again.
 const addEmployee = function () {
@@ -161,8 +176,17 @@ const addEmployee = function () {
     if (nameVal.trim() === "" || officeVal.trim() === "" || phoneVal.trim() === "") {
         alert("Please enter values to all spaces");
     }
+    else if(!parseInt(officeVal.trim())){
+        alert("Please enter number");
+    }
     else if (findEmployee(nameVal.trim()) >= 0) {
         alert("The employee already exists. Please check the information");
+    }
+    else if(findOffice(officeVal.trim()) >= 0) {
+        alert("The office number already exists. Please select another number");
+    }
+    else if(phoneVal.length !== 12) {
+        alert("Please enter the phone number by this format. XXX-XXX-XXXX");
     }
     else {
         const employeeVal = { name: nameVal.trim(), officeNum: officeVal.trim(), phoneNum: phoneVal.trim() };
@@ -209,6 +233,8 @@ const updateEmployee = function () {
     const updateOffice = $("#newOfficeNum").val();
     const updatePhone = $("#newPhoneNum").val();
 
+    
+
     //Returns the index of matched employee name. If not, returns -1
     const matchedEmployee = findEmployee(updateName.trim());
 
@@ -219,10 +245,19 @@ const updateEmployee = function () {
     else if (matchedEmployee < 0) {
 
         //Alert if the student's name doesn't match
-        alert(`There is no student named ${updateName}`);
+        alert(`There is no employee named ${updateName}`);
+    }
+    else if(findOffice(updateOffice.trim()) >= 0) {
+        alert("The office number already exists. Please select another number");
     }
     else if((updateOffice.trim() === "") && (updatePhone.trim() === "")) {
         alert("Please make sure to input update office number or/and updated phone information");
+    }
+    else if((!parseInt(updateOffice.trim())) && (updateOffice.trim() !== "")){
+        alert("Please enter number");  
+    }
+    else if(updatePhone.length !== 12) {
+        alert("Please enter the phone number by this format. XXX-XXX-XXXX");
     }
     else {
 
