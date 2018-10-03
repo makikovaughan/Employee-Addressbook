@@ -191,8 +191,6 @@ const addEmployee = function () {
     else {
         const employeeVal = { name: nameVal.trim(), officeNum: officeVal.trim(), phoneNum: phoneVal.trim() };
 
-        console.log(employeeVal);
-
         employeeList.push(employeeVal);
 
 
