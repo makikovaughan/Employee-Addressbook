@@ -1,116 +1,181 @@
+//Make the view screen viewable
+const statusShow = "show";
+const statusActive = "active";
 
+//Display the add screen and make other tabs not displayable
+const renderAdd = function () {
 
-//initialize the values
-const resetScreen = function () {
+    //Make add screen viewable
+    $("#v-pills-add").addClass(statusActive);
+    $("#v-pills-add").addClass(statusShow);
 
-    //Make the view screen viewable
-    const statusShow = "show";
-    const statusActive = "active";
+    //Make the rest of screen faded(not viewable)
+    $("#v-pills-verify").removeClass(statusShow);
+    $("#v-pills-verify").removeClass(statusActive);
+
+    $("#v-pills-update").removeClass(statusActive);
+    $("#v-pills-update").removeClass(statusShow);
+
+    $("#v-pills-delete").removeClass(statusActive);
+    $("#v-pills-delete").removeClass(statusShow);
 
     $("#v-pills-view").removeClass(statusShow);
     $("#v-pills-view").removeClass(statusActive);
 
-    
+}
 
-    //Make the screen viewable based on what is clicked on the left screen
-    if (this.text === "Add") {
+//Render Veify screen on the right side of window
+const renderVerify = function () {
 
-        //Make add screen viewable
-        $("#v-pills-add").addClass(statusActive);
-        $("#v-pills-add").addClass(statusShow);
+    //Make add screen viewable
+    $("#v-pills-verify").addClass(statusActive);
+    $("#v-pills-verify").addClass(statusShow);
 
-        //Make the rest of screen faded(not viewable)
-        $("#v-pills-verify").removeClass(statusShow);
-        $("#v-pills-verify").removeClass(statusActive);
+    //Make the rest of screen faded(not viewable)
+    $("#v-pills-update").removeClass(statusShow);
+    $("#v-pills-update").removeClass(statusActive);
 
-        $("#v-pills-update").removeClass(statusActive);
-        $("#v-pills-update").removeClass(statusShow);
+    $("#v-pills-add").removeClass(statusActive);
+    $("#v-pills-add").removeClass(statusShow);
 
-        $("#v-pills-delete").removeClass(statusActive);
-        $("#v-pills-delete").removeClass(statusShow);
-    }
-    else if (this.text === "Verify") {
+    $("#v-pills-delete").removeClass(statusActive);
+    $("#v-pills-delete").removeClass(statusShow);
 
-        //Make add screen viewable
-        $("#v-pills-verify").addClass(statusActive);
-        $("#v-pills-verify").addClass(statusShow);
+    $("#v-pills-view").removeClass(statusShow);
+    $("#v-pills-view").removeClass(statusActive);
 
-        //Make the rest of screen faded(not viewable)
-        $("#v-pills-update").removeClass(statusShow);
-        $("#v-pills-update").removeClass(statusActive);
+}
 
-        $("#v-pills-add").removeClass(statusActive);
-        $("#v-pills-add").removeClass(statusShow);
+//Make the update screen viewable on the right window
+const renderUpdate = function () {
 
-        $("#v-pills-delete").removeClass(statusActive);
-        $("#v-pills-delete").removeClass(statusShow);
-    }
-    else if (this.text === "Update") {
+    //Make update screen viewable
+    $("#v-pills-update").addClass(statusActive);
+    $("#v-pills-update").addClass(statusShow);
 
-        //Make update screen viewable
-        $("#v-pills-update").addClass(statusActive);
-        $("#v-pills-update").addClass(statusShow);
+    //Make the rest of screen faded(not viewable)
+    $("#v-pills-verify").removeClass(statusShow);
+    $("#v-pills-verify").removeClass(statusActive);
 
-        //Make the rest of screen faded(not viewable)
-        $("#v-pills-verify").removeClass(statusShow);
-        $("#v-pills-verify").removeClass(statusActive);
+    $("#v-pills-add").removeClass(statusActive);
+    $("#v-pills-add").removeClass(statusShow);
 
-        $("#v-pills-add").removeClass(statusActive);
-        $("#v-pills-add").removeClass(statusShow);
+    $("#v-pills-delete").removeClass(statusActive);
+    $("#v-pills-delete").removeClass(statusShow);
 
-        $("#v-pills-delete").removeClass(statusActive);
-        $("#v-pills-delete").removeClass(statusShow);
-    }
-    else if (this.text === "Delete") {
+    $("#v-pills-view").removeClass(statusShow);
+    $("#v-pills-view").removeClass(statusActive);
 
-        //Make the delete view available
-        $("#v-pills-delete").addClass(statusActive);
-        $("#v-pills-delete").addClass(statusShow);
+}
 
-        //Make the rest of screen faded
-        $("#v-pills-update").removeClass(statusShow);
-        $("#v-pills-update").removeClass(statusActive);
+//Make the delete screen viewable on the right window
+const renderDelete = function () {
+    //Make the delete view available
+    $("#v-pills-delete").addClass(statusActive);
+    $("#v-pills-delete").addClass(statusShow);
 
-        $("#v-pills-add").removeClass(statusActive);
-        $("#v-pills-add").removeClass(statusShow);
+    //Make the rest of screen faded
+    $("#v-pills-update").removeClass(statusShow);
+    $("#v-pills-update").removeClass(statusActive);
 
-        $("#v-pills-verify").removeClass(statusActive);
-        $("#v-pills-verify").removeClass(statusShow);
-    }
-    else { //Make the rest of screen faded to be able to view the list
-        $("#v-pills-verify").removeClass(statusShow);
-        $("#v-pills-verify").removeClass(statusActive);
+    $("#v-pills-add").removeClass(statusActive);
+    $("#v-pills-add").removeClass(statusShow);
 
-        $("#v-pills-update").removeClass(statusActive);
-        $("#v-pills-update").removeClass(statusShow);
+    $("#v-pills-verify").removeClass(statusActive);
+    $("#v-pills-verify").removeClass(statusShow);
 
-        $("#v-pills-delete").removeClass(statusActive);
-        $("#v-pills-delete").removeClass(statusShow);
+    $("#v-pills-view").removeClass(statusShow);
+    $("#v-pills-view").removeClass(statusActive);
+}
 
-        $("#v-pills-add").removeClass(statusActive);
-        $("#v-pills-add").removeClass(statusShow);
+//Make the view screen viewable on the right window
+const renderView = function () {
 
-        //Display the list
-        renderList();
-    }
+    //Make other windows not viewable
+    $("#v-pills-verify").removeClass(statusShow);
+    $("#v-pills-verify").removeClass(statusActive);
 
+    $("#v-pills-update").removeClass(statusActive);
+    $("#v-pills-update").removeClass(statusShow);
+
+    $("#v-pills-delete").removeClass(statusActive);
+    $("#v-pills-delete").removeClass(statusShow);
+
+    $("#v-pills-add").removeClass(statusActive);
+    $("#v-pills-add").removeClass(statusShow);
+
+    //Display the list
+    renderList();
+
+}
+
+//Clear all add input values
+const clearAddInput = function () {
 
     //Clear the value inside input tags
     $("#name").val("");
     $("#officeNum").val("");
     $("#phoneNum").val("");
 
+}
+
+//Clear all verify input values
+const clearVerifyInput = function () {
     //Clear the previous value of verification when it is initially clicked
     $("#result").empty();
     $("#verifyName").val("");
+}
 
-    //Clear the previous value of verification when it is initially clicked
+// Clear all update input values
+const clearUpdateInput = function () {
+    //Clear the previous value of update when it is initially clicked
     $("#newName").val("");
     $("#newOfficeNum").val("");
     $("#newPhoneNum").val("");
+}
+
+//Clear delete input value
+const clearDeleteInput = function () {
 
     //Clear the previous value of deleted employee's name when it is initially clicked
     $("#deleteName").val("");
+
+}
+
+
+//initialize the values
+const changeScreen = function () {
+
+    //Make the screen viewable based on what is clicked on the left screen
+    if (this.text === "Add") {
+        //Displays add screen on the right screen
+        renderAdd();
+    }
+    else if (this.text === "Verify") {
+
+        renderVerify();
+    }
+    else if (this.text === "Update") {
+        renderUpdate();
+    }
+    else if (this.text === "Delete") {
+        renderDelete();
+    }
+    else { //Make the rest of screen faded to be able to view the list
+        renderView();
+    }
+
+    //Clear the value inside input tags
+    clearAddInput();
+
+    //Clear the previous value of verification when it is initially clicked
+    clearVerifyInput();
+
+    //Clear the previous value of update when it is initially clicked
+    clearUpdateInput();
+
+    //Clear the previous value of deleted employee's name when it is initially clicked
+    clearDeleteInput();
 }
 
 
@@ -120,22 +185,17 @@ function renderList() {
 
     $("#v-pills-view").empty();
 
-    //Change the add button viewable
-    const statusShow = "show";
-    const statusActive = "active";
-
     //Make the view screen viewable
     $("#v-pills-view").addClass(statusShow);
     $("#v-pills-view").addClass(statusActive);
 
-    for (let i = 0; i < employeeList.length; i++) {
-
-        $("#v-pills-view").append(`<div class="border border-info pl-3 mt-3 mb-3"> 
-        <p>${employeeList[i].name}</p>
-        <p>${employeeList[i].officeNum}</p>
-        <p>${employeeList[i].phoneNum} </p></div>`);
-
-    }
+    //Display the list of empoyees
+    employeeList.forEach(function(employee){
+        $("#v-pills-view").append(`<div class="border border-info pl-3 mt-3 mb-3">
+        <p>${employee.name}</p>
+        <p>${employee.officeNum}</p>
+        <p>${employee.phoneNum} </p></div>`);
+    });
 
 }
 
@@ -198,6 +258,8 @@ const addEmployee = function () {
 
         employeeList.push(employeeVal);
 
+        //Clear the value inside input tags
+        clearAddInput();
 
         //Call function to render the updated list
         renderList();
@@ -226,6 +288,7 @@ const verifyEmployee = function () {
             $("#result").text("No");
         }
     }
+
 
 }
 
@@ -275,6 +338,9 @@ const updateEmployee = function () {
             employeeList[matchedEmployee].phoneNum = updatePhone.trim();
         }
 
+        //Clear the previous value of update when it is initially clicked
+        clearUpdateInput();
+
         //Display the student list
         renderList();
 
@@ -298,6 +364,9 @@ const deleteEmployee = function () {
         //Delete the employee information
         employeeList.splice(matchedEmployee, 1);
 
+        //Clear the previous value of deleted employee's name when it is initially clicked
+        clearDeleteInput();
+
         //Display the employee list
         renderList();
 
@@ -306,29 +375,17 @@ const deleteEmployee = function () {
 }
 
 
-//When View is clicked on the left screen, change to the view screen on the right window
-$("#v-pills-view-tab").on("click", resetScreen);
-
-//When Add is clicked on the left screen, change to Add screen on the right window
-$("#v-pills-add-tab").on("click", resetScreen);
+//The right screen changes based on the selection on the left window
+$(".nav-link").on("click", changeScreen);
 
 //EventListener when the add button was clicked
 $("#add").on("click", addEmployee);
 
-//When Verify is clicked on the left screen, change to Verify screen on the right window
-$("#v-pills-verify-tab").on("click", resetScreen);
-
 //EventListner when the verify button is clicked on the right window.
 $("#verifyButton").on("click", verifyEmployee);
 
-//When Update is clicked on the left screen, change to update screen on the right window
-$("#v-pills-update-tab").on("click", resetScreen);
-
 //EventListner when the update button is clicked on the right window.
 $("#updateButton").on("click", updateEmployee);
-
-//When Delete is clicked on the left screen, change to delete screen on the right window
-$("#v-pills-delete-tab").on("click", resetScreen);
 
 //EventListner when the delete button is clicked on the right window.
 $("#deleteButton").on("click", deleteEmployee);
