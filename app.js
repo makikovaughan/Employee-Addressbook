@@ -220,7 +220,7 @@ const findOffice = function (officeNum) {
 
     function findIndexNumber(element) {
 
-        return element.officeNum === parseInt(officeNum);
+        return parseInt(element.officeNum) === parseInt(officeNum);
 
     }
 
@@ -240,20 +240,20 @@ const addEmployee = function () {
     if (nameVal.trim() === "" || officeVal.trim() === "" || phoneVal.trim() === "") {
         alert("Please enter values to all spaces");
     }
-    else if (!parseInt(officeVal.trim())) {
-        alert("Please enter number");
+    else if (isNaN(officeVal.trim())) {
+        alert("Please enter the numeric office number");
     }
     else if (findEmployee(nameVal.trim()) >= 0) {
         alert("The employee already exists. Please check the information");
     }
     else if (findOffice(officeVal.trim()) >= 0) {
         alert("The office number already exists. Please select another number");
-    }
-    else if ((!parseInt(phoneVal.slice(0, 3))) || (!parseInt(phoneVal.slice(4, 7))) || (!parseInt(phoneVal.slice(8, 12)))
+    } 
+    else if (isNaN(phoneVal.slice(0, 3)) || isNaN(phoneVal.slice(4, 7)) || isNaN(phoneVal.slice(8, 12))
         || (phoneVal.slice(3, 4) !== "-") || (phoneVal.slice(7, 8) !== "-") || phoneVal.length !== 12) {
         alert("Please enter the phone number by this format. XXX-XXX-XXXX");
-    }
-    else {
+    }  //Phone number can be shared by multiple empoyees, so do not check the duplicate
+    else { 
         const employeeVal = { name: nameVal.trim(), officeNum: officeVal.trim(), phoneNum: phoneVal.trim() };
 
         employeeList.push(employeeVal);
@@ -287,6 +287,9 @@ const verifyEmployee = function () {
         else { //Matched name not found
             $("#result").text("No");
         }
+
+        //Clear the input box value
+        $("#verifyName").val("");
     }
 
 
@@ -313,19 +316,19 @@ const updateEmployee = function () {
         //Alert if the student's name doesn't match
         alert(`There is no employee named ${updateName}`);
     }
-    else if (findOffice(updateOffice.trim()) >= 0) {
-        alert("The office number already exists. Please select another number");
-    }
     else if ((updateOffice.trim() === "") && (updatePhone.trim() === "")) {
         alert("Please make sure to input update office number or/and updated phone information");
     }
-    else if ((!parseInt(updateOffice.trim())) && (updateOffice.trim() !== "")) {
-        alert("Please enter number");
+    else if (isNaN(updateOffice.trim())) {
+        alert("Please enter a numeric office number");
     }
-    else if ((!parseInt(updatePhone.slice(0, 3))) || (!parseInt(updatePhone.slice(4, 7))) || (!parseInt(updatePhone.slice(8, 12)))
-        || (updatePhone.slice(3, 4) !== "-") || (updatePhone.slice(7, 8) !== "-") || updatePhone.length !== 12) {
+    else if (findOffice(updateOffice.trim()) >= 0) {
+        alert("The office number already exists. Please select another number");
+    }
+    else if (((isNaN(updatePhone.slice(0, 3))) || (isNaN(updatePhone.slice(4, 7))) || (isNaN(updatePhone.slice(8, 12)))
+        || (updatePhone.slice(3, 4) !== "-") || (updatePhone.slice(7, 8) !== "-") || updatePhone.length !== 12) && (updateOffice.trim() === "")) {
         alert("Please enter the phone number by this format. XXX-XXX-XXXX");
-    }
+    } //Phone number can be shared by multiple employees. So, not checking the duplicate
     else {
 
         //Update the office information if the input is not blank
