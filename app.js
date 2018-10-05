@@ -240,6 +240,9 @@ const addEmployee = function () {
     if (nameVal.trim() === "" || officeVal.trim() === "" || phoneVal.trim() === "") {
         alert("Please enter values to all spaces");
     }
+    else if (!(isNaN(nameVal.trim()))) {
+        alert("Please do not enter numbers in the name");
+    }
     else if (isNaN(officeVal.trim())) {
         alert("Please enter the numeric office number");
     }
