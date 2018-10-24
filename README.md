@@ -34,4 +34,4 @@ https://makikovaughan.github.io/Bootstrap-Portfolio/portfolio.html
 ![bootstrap](./images/bootstrap.png)
 
 ## Author
-Makiko Vaughan
+Makiko Vaughan (makiko.vaughan@gmail.com)
